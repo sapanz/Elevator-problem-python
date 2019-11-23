@@ -13,13 +13,13 @@ def increment():
     global current
     current+=1
     time.sleep(2)
-    print("Up", current)
+    print("Upward direction and floor number : ", current)
     
 def decrement():
     global current
     current-=1
     time.sleep(2)
-    print("Down", current)
+    print("Downward direction and floor number : ", current)
     
 def traverse():
     if lift:
@@ -29,7 +29,7 @@ def traverse():
                     decrement()
                     
                 if(str(current) in lift):
-                    print("Stop", current)
+                    print("Stop as we reached to floor number : ", current)
                     lift.remove(str(current))
                     break
                     
@@ -38,7 +38,7 @@ def traverse():
     
 
 if __name__ == '__main__':
-    print("Enter numbers")
+    print("Enter floor numbers to reach through lift : ", end="")
     while(True):
         t1= threading.Thread(target=get_input, name='t1')
         t2= threading.Thread(target=traverse, name='t2')
@@ -46,4 +46,3 @@ if __name__ == '__main__':
         time.sleep(5)
         traverse()
         t2.start()
-
